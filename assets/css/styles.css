@@ -1,0 +1,643 @@
+
+/*Selector universal: estilos a todo el documento
+before: para elementos agregado antes
+after: para elementos aggregados despues*/ 
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*estilos para el cuerpo, contnedor principal de
+nuestra pagina*/
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Aboreto', sans-serif;
+    font-size: small;
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+}
+
+/*páginas con fondo blanco y
+color de fuente negro*/
+.body-nosotros{
+    background-color: white;
+    color:black;
+}
+
+.body-formulario{
+  background-color: #f1ebf0;
+  color:black;
+}
+
+/*nos permite enviar el footer hacia abajo
+le decimos al body que la section main debe ocupar
+espacio restante fuera de header y footer*/
+main{
+  flex:1;
+}
+
+span {
+    font-family: "Bad Script", cursive;
+}
+
+
+/*estilos para header*/
+.cabecera-menu {
+    position: sticky;/*fixed+relative*/
+    top: 0;
+    z-index: 100;
+    background-color: black;
+}
+
+/*Estilos para el header-inner(logo-links-agendacita*/
+.header-inner {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+/*estilo del boton logo*/
+.btn-logo img {
+    width: 80px; 
+}
+
+.btn-logo img:hover{
+   filter: invert(0%) sepia(50%) saturate(534%) hue-rotate(5deg) brightness(95%) contrast(97%);
+}
+
+/*estilo de links de navegacion*/
+
+.nav-links {
+    gap: 55px;
+    margin:0;
+    list-style: none;
+    display: flex;
+}
+
+/*Estilos para los enlaces del menu*/
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    border-bottom: 0.5px dashed transparent;
+}
+
+/*Estilos para links de nav con dos lineas*/
+.nav-links .item1,
+.nav-links .item2  {
+    line-height:1;
+    text-align: center;
+}
+
+ul li a:hover {
+    color: rgb(238, 222, 150);
+    border-bottom: 0.5px dashed rgb(245, 227, 123);
+}
+
+
+/*Menú Hamburguesa*/
+/*en pantalla grande, no aparece*/
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+/*en pantalla pequeña, aparece*/
+@media (max-width: 900px) {
+  /* Mostrar el ícono ☰ */
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #f5f1f1;
+    position: absolute;
+    top: 70px; /* altura del header */
+    left: 0px;
+    width: 100%;
+    padding: 10px 0px;
+    text-align: center;
+    z-index: 99;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+    
+  }
+  .nav-links li a{
+    color: black;
+    font-size: 1.5em;
+  }
+  
+  .nav-links li a:hover{
+    color: rgb(207, 170, 5);
+    
+  }
+
+  .btn-cita {
+    display: none;
+  }
+   .header-inner {
+    justify-content: space-between;
+  }
+}
+
+
+/*Estilos para el boton*/
+.btn-cita a {
+    
+    width: auto;
+    margin-left: 0px;
+    padding: 6px 18px;  ;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-color: white;
+    white-space: nowrap;/*evita salto*/
+    border: 1px solid white;
+    font-size: 12px;
+}
+.btn-cita a:hover {
+    background-color: rgb(229, 210, 100);
+    color: black;
+    transition: 0.3s;
+    
+}
+
+/*CUERPO DE LA PAGINA*/
+
+/*HOME - INICIO*/ 
+
+  /*DEGRADADO EN EL BOOTSTRAP - BANNER*/
+.img-wrapper {
+  position: relative;
+}
+
+.img-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px; /* altura del degradado */
+  background: linear-gradient(to top, rgb(12, 12, 12), transparent);
+  pointer-events: none; /* evita interferencias */
+}
+  /*FIN DEL BOOTSTRAP*/
+
+/*TITULOS*/
+
+.titulo {
+    text-align: center;
+    color: white;
+    margin: 5px 0 20px 0;
+}
+
+h1 {
+    font-size: 80px;
+}
+
+.h1menu {
+    font-size: 40px;
+}
+
+.titulo.nosotros h1 {
+    color: black;
+}
+
+
+@media (max-width:900px){
+    h1 {
+        font-size: 40px;
+    }
+}
+
+
+/*TARJETAS HOME, PRO QUIRURIGOS Y NO QUIRURGICOS*/
+  
+.tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.tarjeta-1, .tarjeta-2, .tarjeta-3{
+    border: 0.5px solid white;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.tarjeta-1 p, .tarjeta-2 p, .tarjeta-3 p {
+    text-align: center;
+}
+
+.tarjeta-1 h2, .tarjeta-2 h2, .tarjeta-3 h2{
+    
+    background-color: white;
+    color: black;
+    width: auto;
+    text-decoration: none;
+    font-size:larger;
+    text-align: center;
+}
+
+.tarjeta-1  a, .tarjeta-2  a, .tarjeta-3 a {
+    text-decoration: none;
+}
+
+.tarjeta-1 h2:hover,
+.tarjeta-2 h2:hover,
+.tarjeta-3 h2:hover{
+    color:rgb(180, 150, 13);
+    transition: 0.3s;
+    border-bottom: 0.5px dashed rgb(180, 150, 13);
+}
+
+.h2-container {
+    background-color: white;
+    margin: 0;
+    padding: 5px 20px 10px 20px;
+}
+
+@media (max-width:900px){
+    .tarjetas  {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    }
+    .tarjeta-1, .tarjeta-2, .tarjeta-3{
+    width: 90%;  /*no ocupa todo*/            
+    max-width: 400px;  /*y no crece más*/
+    text-align: center;
+    
+    }
+}
+
+/*PROCEDIMIENTOS QUIRURGICOS Y NO QUIRURGICOS*/
+
+/*IMAGEN PROCEDIMIENTOS QX Y NO QX*/
+
+.pro img{
+    display: block;
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.pro span {
+    font-size: 25px;
+}
+
+/*FIN DE PROCEDIMIENTOS QUIRURGICOS Y NO QUIRURGICOS*/
+
+/*RESULTADOS*/
+.frase-video {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin : 20px;
+}
+
+video {
+  display: block;
+  width: 800px;
+  border-radius: 10px;
+}
+
+.testimonio {
+  background-color: rgb(245, 239, 239);
+  border-radius: 10px;
+  padding: 10px;
+  border-left: 5px solid #f4d988;
+}
+.testimonio p , .testimonio span {
+  color: black;
+}
+.tratamiento {
+  font-size: 10px;
+}
+
+@media (max-width: 900px) {
+  .frase-video {
+    margin: 10px;
+  }
+
+  video {
+    width: 100%;
+  }
+
+  .testimonio {
+    padding: 12px;
+  }
+
+  .testimonio p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+}
+
+/*FIN DE RESULTADOS*/
+
+/*NOSOTROS*/
+
+.doctores {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 40px 0;
+  align-items: center;
+
+}
+
+/*tarjetas de doctores*/
+
+.doctor1, .doctor2, .doctor3 {
+    display:flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.fotodoctor1 img,
+.fotodoctor2 img,
+.fotodoctor3 img{
+    width: 300px;
+}
+
+@media (max-width: 900px){
+    .doctor1, .doctor2, .doctor3 {
+    display:flex;
+    flex-direction: column;
+  }
+
+.doctores {
+    gap: 50px;
+  }
+}
+
+/*boton linkedin*/
+.nombre-boton img{
+  width: 30px;
+}
+.nombre-boton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-linkedin {
+  display: flex;
+  text-decoration: none;
+}
+
+.btn-linkedin span {
+  opacity: 0;
+  width: 0;
+  transition: all 0.3s ease;/*cuando aparezca demore 0.3s*/
+  white-space: nowrap;
+}
+
+.btn-linkedin:hover span {
+  opacity: 1;
+  width: auto;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  padding: 5px;
+  margin: 8px 5px;
+  color: white;
+  background-color: black;
+  border-radius: 3px;
+}
+
+.btn-linkedin:hover img{
+  opacity:0;
+  width: 0;
+}
+
+/*FIN DE  NOSOTROS*/
+
+
+
+/*MENU CONTACTANOS*/
+
+.contenedor-contactanos {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.videocontacto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover; /* rellena sin defromar*/
+  transform: translate(-50%, -50%); /*acomoda*/
+  z-index: 1; /* debajo del overlay y texto */
+}
+
+/*capa semitransparente*/
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85); /* oscurece el fondo */
+  z-index: 2;
+}
+
+/*texto y botones*/
+.texto-btn-contactanos {
+  position: relative;/*entra en el flujo de posiciones*/
+  z-index: 3; /* sobre el overlay */
+  color: #fff;
+  text-align: center;
+  max-width: 90%;
+  font-family: 'Aboreto', sans-serif;
+}
+
+.texto-btn-contactanos h2 {
+  font-size: 2.5rem;
+}
+
+.texto-btn-contactanos h2 span {
+  color: #f4d988; 
+}
+
+.texto-btn-contactanos p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/*solo botones*/
+.btn-contacto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-contacto a {
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-wsp {
+  background-color: #1caf14;
+  color: #fff;
+}
+
+.btn-wsp:hover {
+  background-color: #087634;
+}
+
+.btn-agenda {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.btn-agenda:hover {
+  background-color: #e2de8d;
+}
+
+/* FIN CONTACTANOS*/
+
+/*FORMULARIO*/
+.menuform {
+  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: black;
+}
+
+.menuform .header-inner {
+  gap: 30px;
+}
+
+.containerform{
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.containerform span {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+  }
+
+.containerform p{
+  display: block;
+  margin-bottom: 20px;
+  font-size: clamp(10px, 1vw, 12px);
+}
+
+.containerform h2{
+  display: block;
+  text-align: center;
+}
+
+form {
+  padding:20px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+
+/* FOOTER*/
+
+footer {
+    
+    color: black;
+    background-color: rgb(251, 247, 247);
+    padding-top: 20px;
+}
+
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.redes {
+    display: flex;
+    padding-right: 35px ;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100px;
+    height: auto;
+
+}
+.icon-redes img {
+    width: 30px;
+    height: auto;
+}
+.text-redes h3 {
+    font-size: 15px;
+}
+
+.btn-logo {
+    display: flex;   
+}
+.icon-redes li {
+    list-style: none;
+}
+
+.icon-redes ul{
+    display:flex;
+    justify-content:space-between;
+    gap: 20px;
+    
+}
+
+.direccion p{
+    text-align: right; 
+    padding-right: 10px ;
+    color:black;
+}
+.direccion a{
+    text-decoration: none;
+}
+
+
+@media (max-width: 900px) {
+  .footer-inner {
+    flex-direction: column;    /* apila los elementos */
+    align-items: center;       /* centra todo */
+    gap: 10px;                 /* espacio entre secciones */
+    text-align: center;
+  }
+  .btn-logo p{
+    text-align: left;
+  }
+  .direccion p{
+    text-align: center;
+  }
+  
+}
+
+
+
+
